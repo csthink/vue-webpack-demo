@@ -18,6 +18,11 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: createVueLoaderOptions(isDev),
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
       }
     ]
   }
