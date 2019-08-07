@@ -19,8 +19,14 @@ npm install
 npm run dev
 ```
 
-访问项目
+访问测试环境项目
 
 ```
-http://localhost:8080
+http://localhost:8000
+```
+
+打包生成生产环境代码
+
+```
+npm run build
 ```
