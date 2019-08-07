@@ -1,0 +1,36 @@
+{
+  "name": "vue-ssr",
+  "version": "1.0.0",
+  "description": "vue 服务端渲染",
+  "scripts": {
+    "lint": "eslint --ext .js,.jsx,.vue client",
+    "lint-fix": "eslint --fix --ext .js,.jsx,.vue client",
+    "dev": "webpack-dev-server --config ./build/webpack.client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csthink/vue-ssr.git"
+  },
+  "keywords": [],
+  "author": "csthink",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csthink/vue-ssr/issues"
+  },
+  "homepage": "https://github.com/csthink/vue-ssr#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "css-loader": "^3.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "html-webpack-plugin": "^3.2.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
