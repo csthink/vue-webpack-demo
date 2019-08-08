@@ -2,6 +2,8 @@
   "name": "vue-ssr",
   "version": "1.0.0",
   "description": "vue 服务端渲染",
+  "sideEffects": ["*.css", "*.scss"],
+  "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.vue client",
     "lint-fix": "eslint --fix --ext .js,.jsx,.vue client",

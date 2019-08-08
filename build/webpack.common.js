@@ -5,11 +5,12 @@ const createVueLoaderOptions = require('./vue-loader.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'production',
+  entry: {
+    app: path.resolve(__dirname, '../src/client/index.js')
+  },
   target: 'web',
   output: {
-    filename: 'js/[name].js', // palceholder占位符,入口文件打包后生成的文件名
-    chunkFilename: 'js/[name].js', // 异步加载的间接的js文件。用来打包import('module')方法中引入的模块
+    filename: 'js/[name].bundle.[hash:8].js', // palceholder占位符,入口文件打包后生成的文件名
     path: path.resolve(__dirname, '../dist'),
     publicPath: '' // 将注入到 html中的 js文件前面加上地址
   },
@@ -81,7 +82,7 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'font/[name].[hash:8].[ext]',
+            name: 'fonts/[name].[hash:8].[ext]',
           },
         }],
       }

@@ -6,6 +6,10 @@ import './assets/style/global.scss'
 
 Vue.use(BootstrapVue)
 
+import './assets/style/test.scss'
+
+// consoe.log(11)
+
 new Vue({
   render: h => h(App)
 }).$mount('#root');
