@@ -14,12 +14,13 @@
 
 <script>
  import VueTerminal from 'vue-terminal'
+// import VueTerminal from './assets/js/vue-terminal'
 
  const commandList = {
   contact: {
     description: 'contact author',
     messages: [
-      { message: 'Website: http://csthink.com' },
+      { message: 'Website: https://csthink.com' },
       { message: 'Email: security.2009@live.cn' },
       { message: 'Github: https://github.com/csthink' },
       { message: 'WeChat: kcly119' },
@@ -92,7 +93,7 @@ const taskList = {
           i++
           if (!mockData[i]) {
             clearInterval(interval)
-            resolve({ type: 'success', label: 'Success', message: 'ღ Initialization Complete...' })
+            resolve({ type: 'success', label: 'Success', message: 'ღ Initialization Complete ...' })
           }
         }, 1000);
       })
