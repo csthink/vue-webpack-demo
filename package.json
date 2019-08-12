@@ -2,7 +2,10 @@
   "name": "vue-ssr",
   "version": "1.0.0",
   "description": "vue 服务端渲染",
-  "sideEffects": ["*.css", "*.scss"],
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.vue client",
@@ -22,12 +25,14 @@
   },
   "homepage": "https://github.com/csthink/vue-ssr#readme",
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-terminal": "^1.0.1-beta"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@babel/runtime-corejs2": "^7.5.5",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",

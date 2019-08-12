@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import BootstrapVue from 'bootstrap-vue'
-import './assets/style/global.scss'
+// import BootstrapVue from 'bootstrap-vue'
+// import './assets/style/global.scss'
 
-Vue.use(BootstrapVue)
+// Vue.use(BootstrapVue)
 
-import './assets/style/test.scss'
+// import './assets/style/test.scss'
 
 // consoe.log(11)
 
