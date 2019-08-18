@@ -8,8 +8,8 @@
   ],
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.vue client",
-    "lint-fix": "eslint --fix --ext .js,.jsx,.vue client",
+    "lint": "eslint --ext .js,.jsx,.vue src",
+    "lint-fix": "eslint --fix --ext .js,.jsx,.vue src",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.client.js",
     "build": "cross-env NODE_ENV=production  webpack --config ./build/webpack.client.js"
   },
@@ -26,7 +26,9 @@
   "homepage": "https://github.com/csthink/vue-ssr#readme",
   "dependencies": {
     "vue": "^2.6.10",
-    "vue-terminal": "^1.0.1-beta"
+    "vue-router": "^3.1.2",
+    "vue-terminal": "^1.0.1-beta",
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

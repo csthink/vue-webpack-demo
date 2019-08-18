@@ -1,0 +1,15 @@
+<template>
+  <div :id="$style.footer">
+    <span>Written by csthink</span>
+  </div>
+</template>
+
+<style lang="scss" module>
+#footer{
+  margin-top: 40px;
+  text-align: center;
+  color: #bfbfbf;
+  font-size: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+</style>
