@@ -10,6 +10,8 @@
 import Header from './views/layout/Header.vue';
 import Footer from './views/layout/Footer.vue';
 
+// 测试自定义块
+console.log(Header.__docs)
 export default {
   components: {
     Header,

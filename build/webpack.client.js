@@ -63,8 +63,8 @@ const prodConfig = {
   plugins: defaultPluginConfig.concat([
     new CleanWebpackPlugin(), // 在打包之前，可以删除dist文件夹下的所有内容
     new MiniCssExtractPlugin({
-      filename: 'css/style.[contenthash:8].css',
-      chunkFilename: 'css/[name].chunk.[chunkhash:8].css'
+      filename: 'style.[contenthash:8].css',
+      chunkFilename: '[name].chunk.[chunkhash:8].css'
     })
   ]),
   optimization: {

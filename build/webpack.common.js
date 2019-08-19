@@ -10,7 +10,7 @@ module.exports = {
   },
   target: 'web',
   output: {
-    filename: 'js/[name].bundle.[hash:8].js', // palceholder占位符,入口文件打包后生成的文件名
+    filename: '[name].bundle.[hash:8].js', // palceholder占位符,入口文件打包后生成的文件名
     path: path.resolve(__dirname, '../dist'),
     publicPath: '' // 将注入到 html中的 js文件前面加上地址
   },
@@ -20,6 +20,11 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: createVueLoaderOptions(devMode),
+      },
+      {
+        // Vue Loader 自定义块
+        resourceQuery: /blockType=docs/,
+        loader: require.resolve('./docs-loader.js')
       },
       {
         test: /\.js$/,
@@ -67,22 +72,22 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|svg)$/,
         use: {
           loader: 'url-loader',
           options: {
-            name: '[name].[hash:8].[ext]',
-            outputPath: 'images/',
-            limit: 10240, // 图片小于limit(单位byte, 1KB)的时候会把图片BASE64编码,大于就会打包成文件格式
+            name: 'resources/[path][name].[hash:8].[ext]',
+            // outputPath: 'assets/images/',
+            limit: 1024, // 图片小于limit(单位byte, 1KB)的时候会把图片BASE64编码,大于就会打包成文件格式
           },
         },
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'fonts/[name].[hash:8].[ext]',
+            name: 'resources/[path]/[name].[hash:8].[ext]',
           },
         }],
       }
