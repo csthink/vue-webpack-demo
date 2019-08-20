@@ -5,4 +5,7 @@
 // import './extend'
 
 // 自定义组件的双向绑定
-import './v-model'
+// import './v-model'
+
+// Vue 组件高级特性(插槽、具名插槽、插槽作用域)
+import './advanced'
