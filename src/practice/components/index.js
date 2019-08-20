@@ -8,4 +8,7 @@
 // import './v-model'
 
 // Vue 组件高级特性(插槽、具名插槽、插槽作用域)
-import './advanced'
+// import './advanced'
+
+// Vue 组件的 render function
+import './render'
