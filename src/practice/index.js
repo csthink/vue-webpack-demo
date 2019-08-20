@@ -11,4 +11,7 @@
 // import './comuted'
 
 // Vue 原生指令
-import './directive'
+// import './directive'
+
+// Vue 组件
+import './components'
