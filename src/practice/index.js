@@ -8,4 +8,7 @@
 // import './data-binding'
 
 // computed 和 watched
-import './comuted'
+// import './comuted'
+
+// Vue 原生指令
+import './directive'
