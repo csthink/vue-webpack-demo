@@ -2,4 +2,7 @@
 // import './instance'
 
 // Vue 生命周期
-import './lifecycle'
+// import './lifecycle'
+
+// Vue 数据绑定
+import './data-binding'
