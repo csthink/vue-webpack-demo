@@ -5,4 +5,7 @@
 // import './lifecycle'
 
 // Vue 数据绑定
-import './data-binding'
+// import './data-binding'
+
+// computed 和 watched
+import './comuted'
