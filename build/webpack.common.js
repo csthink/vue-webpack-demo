@@ -12,6 +12,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.[hash:8].js', // palceholder占位符,入口文件打包后生成的文件名
     path: path.resolve(__dirname, '../dist'),
+    // publicPath: '/public/' // 将注入到 html中的 js文件前面加上地址
     publicPath: '' // 将注入到 html中的 js文件前面加上地址
   },
   module: {

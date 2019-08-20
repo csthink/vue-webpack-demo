@@ -42,8 +42,10 @@ const devConfig = {
       errors: true, // 在浏览器弹出提示有错误
     },
     hot: true,
+    // vue-route 的 mode 模式修改为 history 后，支持刷新页面功能，否则404
     historyApiFallback:{
-      index: 'index.html'
+      // index: '/public/index.html' // 具体内容与 webpack common 中 output的 publicPath有关，若设置了 publicPath,需要加上这部分前缀
+      index: '/index.html'
     }
   },
   plugins: defaultPluginConfig.concat([
