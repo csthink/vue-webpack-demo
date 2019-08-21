@@ -12,6 +12,7 @@ const HtmlWebpackInlineSourcePlugin  = require('html-webpack-inline-source-plugi
 
 const devMode = process.env.NODE_ENV !== 'production'
 const webpackCommonConfig = require('./webpack.common')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const defaultPluginConfig = [
   new webpack.DefinePlugin({
@@ -27,7 +28,8 @@ const defaultPluginConfig = [
     // inlineSource: '.(js|css)$' // css 或 js 文件内嵌到 html 页面中
     inlineSource: 'runtime~.+\\.js'
   }),
-  new HtmlWebpackInlineSourcePlugin()
+  new HtmlWebpackInlineSourcePlugin(),
+  new VueClientPlugin()
 ]
 
 // plugin 可以在 webpack 运行到某个时刻的时候，帮你做一些事情
