@@ -23,7 +23,9 @@
 <script>
 import {
   mapState,
-  mapGetters
+  mapGetters,
+  mapMutations,
+  mapActions
 } from 'vuex';
 import Header from './views/layout/Header.vue';
 import Footer from './views/layout/Footer.vue';
@@ -76,13 +78,32 @@ export default {
     //   })
     // }, 1000);
 
+    // mutatison 的简写 配合 methods 中 ...mapMutations(['updateCount']) 的使用
+    // let i = 1;
+    // setInterval(() => {
+    //   this.updateCount({
+    //       num: i++,
+    //       num2: 22,
+    //       num3: 33,
+    //       num4: 44
+    //     })
+    // }, 1000);
+
     // actions 异步操作 state
-    this.$store.dispatch('updateCountAsync', {
+    // this.$store.dispatch('updateCountAsync', {
+    //   num: 5,
+    //   time: 2000
+    // });
+    // actions 的简写，配合 methods 中 ...mapActions(['updateCountAsync']) 的使用
+    this.updateCountAsync({
       num: 5,
       time: 2000
     });
-
-  }
+  },
+  methods: {
+    ...mapActions(['updateCountAsync']),
+    ...mapMutations(['updateCount'])
+  },
 };
 </script>
 
