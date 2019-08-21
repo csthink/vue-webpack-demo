@@ -14,6 +14,37 @@ export default () => {
     state: defaultState,
     mutations,
     getters,
-    actions
+    actions,
+    modules: {
+      a: {
+        namespaced: true,
+        state: {
+          text: 'state from a module'
+        },
+        mutations: {
+          updateText(state, num) {
+            state.text = num;
+          }
+        },
+        getters: {
+          textPlus(state, getters, rootState) {
+            return state.text + " " + rootState.count + " modified by getters";
+          }
+        },
+        actions: {
+          add({ state, commit, rootState}) {
+            // 调用本模块中的 mutation
+            commit('updateText', rootState.count);
+            // 调用全局的 mutation
+            // commit('updateCount', {num: rootState.count}, { root: true})
+          }
+        }
+      },
+      b: {
+        state: {
+          text: 'state from b module'
+        }
+      }
+    }
   });
 };

@@ -4,6 +4,10 @@
     <!-- <p>state count: {{ count }}</p> -->
     <p>state count: {{ counter }}</p>
     <p>getters fullName: {{ fullName }}</p>
+
+    <p>a 模块的 state: {{ testA }}</p>
+    <p>b 模块的 state: {{ testB }}</p>
+    <p>a 模块的 getters: {{ textPlus }}</p>
     <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
       <!-- 使用路由名称跳转 -->
@@ -47,14 +51,28 @@ export default {
     // }),
     // 别名加计算
     ...mapState({
-      counter: (state) => state.count
+      counter: (state) => state.count,
+      testB: state => state.b.text
     }),
-    ...mapGetters(['fullName'])
+    // ...mapGetters(['fullName']),
+    // 可以设置名称的映射关系
+    ...mapGetters({
+      'fullName': 'fullName',
+      'textPlus': 'a/textPlus' // vuex a 模块中的 getters
+    }),
     // count () {
     //   return this.$store.state.count;
     // },
     // fullName () {
     //   return this.$store.getters.fullName;
+    // }
+
+    // vuex 模块的使用
+    testA () {
+      return this.$store.state.a.text;
+    },
+    // testB () {
+    //   return this.$store.state.b.text;
     // }
   },
   mounted () {
@@ -99,10 +117,16 @@ export default {
       num: 5,
       time: 2000
     });
+
+    // 调用 vuex 的 a 模块中的 mutations,使用了命名空间
+    this['a/updateText']('new state from a module modified')
+
+    // 调用 vuex 的 a 模块中的 actions
+    this['a/add']();
   },
   methods: {
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapActions(['updateCountAsync', 'a/add']),
+    ...mapMutations(['updateCount', 'a/updateText'])
   },
 };
 </script>
