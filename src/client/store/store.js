@@ -15,6 +15,13 @@ export default () => {
     mutations,
     getters,
     actions,
+    // vuex 的插件开发，插件就是一个方法
+    // plugins: [
+    //   (store) => {
+    //     console.log('plugin invoked')
+    //   }
+    // ],
+    // vuex 的模块功能
     // modules: {
     //   a: {
     //     namespaced: true,
