@@ -6,7 +6,7 @@ export default {
   // mutations 接收多个参数的用法(js 解构赋值语法)
   updateCount(state, {num, num2, ...rest}) {
     state.count = num;
-    console.log(num2);
-    console.log(rest);
+    // console.log(num2);
+    // console.log(rest);
   }
 }

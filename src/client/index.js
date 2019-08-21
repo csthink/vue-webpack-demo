@@ -22,9 +22,29 @@ store.registerModule('c', {
   }
 })
 
+// store.unregisterModule('c')
+// 监听 store 的 state
+// 参数1 是监听一个想要得到的返回值
+// 参数2 是前一个返回值有变化的时候回调的函数
+// store.watch((state) => state.count + 1, (newCount) => {
+//   console.log('new count wateched: ' + newCount)
+// });
+
+// 监听 store 的 mutation
+// store.subscribe((mutation, state) => {
+//   console.log(mutation.type); // mutation 的名称
+//   console.log(mutation.payload); // 传递给 mutation 的所有参数
+// });
+
+// 监听 store 的 action
+// store.subscribeAction((action, state) => {
+//   console.log(action.type);
+//   console.log(action.payload);
+// });
+
 // 路由导航守卫
 router.beforeEach((to, from, next) => {
-  console.log('beforeEach invoked');
+  // console.log('beforeEach invoked');
   next();
   // if (to.fullPath === '/app') {
   //   next({path: '/login', replace: true})
@@ -34,12 +54,12 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeResolve((to, from, next) => {
-  console.log('beforeResolve invoked');
+  // console.log('beforeResolve invoked');
   next();
 });
 
 router.afterEach((to, from) => {
-  console.log('afterEach invoked');
+  // console.log('afterEach invoked');
 });
 
 new Vue({

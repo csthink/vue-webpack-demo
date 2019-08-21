@@ -24,7 +24,7 @@ export default [
     // 使用异步加载
     component: () => import('../views/todo/Todo.vue'),
     beforeEnter (to, from, next) {
-      console.log('app router before enter invoked')
+      // console.log('app router before enter invoked')
       next()
     },
     // children: [
