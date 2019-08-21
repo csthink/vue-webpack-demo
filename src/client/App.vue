@@ -1,7 +1,8 @@
 <template>
   <div :id="$style.app">
     <Header />
-    <p>{{ count }}</p>
+    <p>state count: {{ count }}</p>
+    <p>getters fullName: {{ fullName }}</p>
     <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
       <!-- 使用路由名称跳转 -->
@@ -33,6 +34,9 @@ export default {
   computed: {
     count () {
       return this.$store.state.count;
+    },
+    fullName () {
+      return this.$store.getters.fullName;
     }
   },
   mounted () {
