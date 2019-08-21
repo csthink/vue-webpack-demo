@@ -29,6 +29,26 @@ import Item from './Item.vue';
 import Tab from './Tab.vue';
 
 export default {
+  beforeRouteEnter(to, from, next) {
+    console.log('todo beforeRouteEnter invoked');
+    next();
+    // next(vm => {
+      // 配合 routers 中 props 使用
+      // console.log('after enter this.id is:' + vm.id);
+    // })
+  },
+  // 路由参数发生变化时触发这个钩子
+  beforeRouteUpdate(to, from, next) {
+    console.log('todo beforeRouteUpdate invoked');
+    next();
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('todo beforeRouteLeave invoked');
+    next();
+    // if (global.confirm('Are you sure?')) {
+    //   next();
+    // }
+  },
   components: {
     Item,
     Tab,

@@ -22,9 +22,10 @@ export default [
       description: 'todo 页面描述'
     },
     component: () => import('../views/todo/Todo.vue'),
-    // beforeEnter (to, from, next) {
-    //   next()
-    // },
+    beforeEnter (to, from, next) {
+      console.log('app router before enter invoked')
+      next()
+    },
     // children: [
     //   {
     //     path: 'test',

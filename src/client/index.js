@@ -12,6 +12,26 @@ Vue.use(BootstrapVue);
 
 const router = createRouter();
 
+// 路由导航守卫
+router.beforeEach((to, from, next) => {
+  console.log('beforeEach invoked');
+  next();
+  // if (to.fullPath === '/app') {
+  //   next({path: '/login', replace: true})
+  // } else {
+  //   next()
+  // }
+});
+
+router.beforeResolve((to, from, next) => {
+  console.log('beforeResolve invoked');
+  next();
+});
+
+router.afterEach((to, from) => {
+  console.log('afterEach invoked');
+})
+
 new Vue({
   router,
   render: h => h(App)
