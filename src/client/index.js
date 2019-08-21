@@ -15,6 +15,13 @@ Vue.use(BootstrapVue);
 const router = createRouter();
 const store = createStore();
 
+// vuex 动态添加模块
+store.registerModule('c', {
+  state: {
+    text: 'dynamic module from c module'
+  }
+})
+
 // 路由导航守卫
 router.beforeEach((to, from, next) => {
   console.log('beforeEach invoked');

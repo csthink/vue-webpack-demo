@@ -8,6 +8,7 @@
     <p>a 模块的 state: {{ testA }}</p>
     <p>b 模块的 state: {{ testB }}</p>
     <p>a 模块的 getters: {{ textPlus }}</p>
+    <p>动态加载的 c 模块 state: {{ testC }}</p>
     <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
       <!-- 使用路由名称跳转 -->
@@ -52,7 +53,8 @@ export default {
     // 别名加计算
     ...mapState({
       counter: (state) => state.count,
-      testB: state => state.b.text
+      testB: state => state.b.text,
+      testC: state => state.c.text,
     }),
     // ...mapGetters(['fullName']),
     // 可以设置名称的映射关系
