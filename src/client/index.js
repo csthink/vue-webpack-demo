@@ -3,14 +3,17 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import App from './App.vue';
 import BootstrapVue from 'bootstrap-vue';
+
 import './assets/style/global.scss';
 import createRouter from './config/router';
+import createStore from './store/store';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(BootstrapVue);
 
 const router = createRouter();
+const store = createStore();
 
 // 路由导航守卫
 router.beforeEach((to, from, next) => {
@@ -30,9 +33,10 @@ router.beforeResolve((to, from, next) => {
 
 router.afterEach((to, from) => {
   console.log('afterEach invoked');
-})
+});
 
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#root');

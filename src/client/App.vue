@@ -1,6 +1,7 @@
 <template>
   <div :id="$style.app">
     <Header />
+    <p>{{ count }}</p>
     <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
       <!-- 使用路由名称跳转 -->
@@ -20,6 +21,7 @@
 <script>
 import Header from './views/layout/Header.vue';
 import Footer from './views/layout/Footer.vue';
+import { setInterval } from 'timers';
 
 // 测试自定义块
 // console.log(Header.__docs)
@@ -28,8 +30,19 @@ export default {
     Header,
     Footer
   },
+  computed: {
+    count () {
+      return this.$store.state.count;
+    }
+  },
   mounted () {
-    console.log(this.$route)
+    console.log(this.$route);
+    console.log(this.$store);
+    let i = 1;
+    setInterval(() => {
+      // 调用 mutation 的方法
+      this.$store.commit('updateCount', i++)
+    }, 1000)
   }
 };
 </script>

@@ -21,6 +21,7 @@ export default [
       title: 'todo 应用',
       description: 'todo 页面描述'
     },
+    // 使用异步加载
     component: () => import('../views/todo/Todo.vue'),
     beforeEnter (to, from, next) {
       console.log('app router before enter invoked')
