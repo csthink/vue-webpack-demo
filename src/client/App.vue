@@ -1,12 +1,6 @@
 <template>
   <div :id="$style.app">
     <Header />
-    <router-link to="/app">
-      app
-    </router-link>
-    <router-link to="/login">
-      login
-    </router-link>
     <router-view />
     <Footer />
   </div>
@@ -16,8 +10,6 @@
 import Header from './views/layout/Header.vue';
 import Footer from './views/layout/Footer.vue';
 
-// 测试自定义块
-// console.log(Header.__docs)
 export default {
   components: {
     Header,
