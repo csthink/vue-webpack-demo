@@ -1,7 +1,8 @@
 <template>
   <div :id="$style.app">
     <Header />
-    <p>state count: {{ count }}</p>
+    <!-- <p>state count: {{ count }}</p> -->
+    <p>state count: {{ counter }}</p>
     <p>getters fullName: {{ fullName }}</p>
     <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
@@ -20,6 +21,10 @@
 </template>
 
 <script>
+import {
+  mapState,
+  mapGetters
+} from 'vuex';
 import Header from './views/layout/Header.vue';
 import Footer from './views/layout/Footer.vue';
 import { setInterval } from 'timers';
@@ -32,12 +37,23 @@ export default {
     Footer
   },
   computed: {
-    count () {
-      return this.$store.state.count;
-    },
-    fullName () {
-      return this.$store.getters.fullName;
-    }
+    // 简便用法
+    // ...mapState(['count']),
+    // 修改 state 别名
+    // ...mapState({
+    //   counter: 'count'
+    // }),
+    // 别名加计算
+    ...mapState({
+      counter: (state) => state.count
+    }),
+    ...mapGetters(['fullName'])
+    // count () {
+    //   return this.$store.state.count;
+    // },
+    // fullName () {
+    //   return this.$store.getters.fullName;
+    // }
   },
   mounted () {
     console.log(this.$route);
