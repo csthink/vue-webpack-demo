@@ -1,13 +1,18 @@
 <template>
   <div :id="$style.app">
     <Header />
+    <!-- <router-link to="/app/123"> -->
     <router-link to="/app">
+      <!-- 使用路由名称跳转 -->
+      <!-- <router-link :to="{name: 'app'}"> -->
       app
     </router-link>
     <router-link to="/login">
       login
     </router-link>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
     <Footer />
   </div>
 </template>
@@ -23,6 +28,9 @@ export default {
     Header,
     Footer
   },
+  mounted () {
+    console.log(this.$route)
+  }
 };
 </script>
 

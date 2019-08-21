@@ -8,7 +8,15 @@ export default [
   },
   {
     path: '/app',
-    name: 'app',
+    // path: '/app/:age',
+    // props: true, // 直接在组件中通过 props 获取
+    // props: {
+    //   age: 45
+    // },
+    // props: (route) => ({
+    //   age: route.query.b
+    // }),
+    name: 'app', // 路由命名,可以用于在 router-link 中跳转
     meta: {
       title: 'todo 应用',
       description: 'todo 页面描述'
@@ -16,7 +24,13 @@ export default [
     component: () => import('../views/todo/Todo.vue'),
     // beforeEnter (to, from, next) {
     //   next()
-    // }
+    // },
+    // children: [
+    //   {
+    //     path: 'test',
+    //     component:
+    //   }
+    // ]
   },
   {
     path: '/login',

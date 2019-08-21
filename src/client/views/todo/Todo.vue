@@ -33,6 +33,12 @@ export default {
     Item,
     Tab,
   },
+  props: {
+    age: {
+      type: Number,
+      default: 18
+    }
+  },
   data() {
     return {
       todos: [],
@@ -49,6 +55,9 @@ export default {
       const completed = this.filter === 'completed';
       return this.todos.filter(todo => completed === todo.completed);
     },
+  },
+  mounted () {
+    console.log(this.age)
   },
   methods: {
     addTodo(e) {
