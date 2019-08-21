@@ -58,11 +58,30 @@ export default {
   mounted () {
     console.log(this.$route);
     console.log(this.$store);
-    let i = 1;
-    setInterval(() => {
-      // 调用 mutation 的方法
-      this.$store.commit('updateCount', i++)
-    }, 1000)
+    // 外部直接修改 state,这样写是不允许的，有了 store.js 中 strict 模式就不能这样书写
+    // 修改数据应该放在 mutations 中
+    // this.$store.state.count = 200;
+
+    // mutations 同步操作 state
+    // let i = 1;
+    // setInterval(() => {
+    //   // 调用 mutation 的方法
+    //   // this.$store.commit('updateCount', i++)
+    //   // mutations 传递多个参数的用法，使用 payload
+    //   this.$store.commit('updateCount', {
+    //     num: i++,
+    //     num2: 22,
+    //     num3: 33,
+    //     num4: 44
+    //   })
+    // }, 1000);
+
+    // actions 异步操作 state
+    this.$store.dispatch('updateCountAsync', {
+      num: 5,
+      time: 2000
+    });
+
   }
 };
 </script>
