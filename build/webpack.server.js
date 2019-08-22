@@ -2,9 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 
+const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ServerMiniCssExtractPlugin = require('./ServerMiniCssExtractPlugin')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
 const webpackCommonConfig = require('./webpack.common')
+// const devMode = process.env.NODE_ENV !== 'production'
 
 const config = {
   entry: path.resolve(__dirname, '../src/client/server-entry.js'),
@@ -21,40 +24,41 @@ const config = {
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
-        oneOf: [
+        use: [
+          MiniCssExtractPlugin.loader,
           {
-            resourceQuery: /module/,
-            use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader', // 将 CSS 转化成 CommonJS 模块
-                options: {
-                  modules: {
-                    mode: 'local',
-                    localIdentName: '[path][name]__[local]',
-                  },
-                  importLoaders: 2, //如果sass文件里还引入了另外一个sass文件，另一个文件还会从sass-loader向上解析。如果不加，就直接从css-loader开始解析
-                  sourceMap: true,
-                  localsConvention: 'camelCase'
-                },
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]',
               },
-              'postcss-loader', // 配置在 css-loader后，在sass|less|stylus-loader 之前
-              'sass-loader' // 将 Sass 编译成 CSS，默认使用 Node Sass
-            ]
+              importLoaders: 2,
+              sourceMap: true,
+              localsConvention: 'camelCase'
+            },
           },
           {
-            use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 2,
-                }
-              },
-              'postcss-loader',
-              'sass-loader'
-            ]
-          }
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.styl/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'stylus-loader'
         ]
       }
     ]
@@ -64,14 +68,12 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'
     }),
+    new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash:8].css',
-      chunkFilename: '[name].chunk.[chunkhash:8].css'
+      filename: 'style.[contenthash:8].css'
     }),
     new VueServerPlugin()
   ]
 }
 
-module.exports = () => {
-  return webpackMerge(webpackCommonConfig, config)
-}
+module.exports = webpackMerge(webpackCommonConfig, config)

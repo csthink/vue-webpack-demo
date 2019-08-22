@@ -5,6 +5,7 @@ const createVueLoaderOptions = require('./vue-loader.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
+  mode: devMode ? 'development' : 'production',
   entry: {
     app: path.resolve(__dirname, '../src/client/index.js')
   },
@@ -12,8 +13,8 @@ module.exports = {
   output: {
     filename: '[name].bundle.[hash:8].js', // palceholder占位符,入口文件打包后生成的文件名
     path: path.resolve(__dirname, '../dist'),
-    // publicPath: '/public/' // 将注入到 html中的 js文件前面加上地址
-    publicPath: '' // 将注入到 html中的 js文件前面加上地址
+    publicPath: '/public/'
+    // publicPath: 'http://127.0.0.1:8000/public/'
   },
   module: {
     rules: [
@@ -35,41 +36,42 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
-        oneOf: [
+        use: [
+          // loader的执行顺序是从右向左，从下到上
+          devMode ? 'vue-style-loader': MiniCssExtractPlugin.loader, // 将 JS 字符串生成为 style 节点
           {
-            resourceQuery: /module/,
-            use: [
-              // loader的执行顺序是从右向左，从下到上
-              devMode ? 'vue-style-loader': MiniCssExtractPlugin.loader, // 将 JS 字符串生成为 style 节点
-              {
-                loader: 'css-loader', // 将 CSS 转化成 CommonJS 模块
-                options: {
-                  modules: {
-                    mode: 'local',
-                    localIdentName: '[path][name]__[local]',
-                  },
-                  importLoaders: 2, //如果sass文件里还引入了另外一个sass文件，另一个文件还会从sass-loader向上解析。如果不加，就直接从css-loader开始解析
-                  sourceMap: true,
-                  localsConvention: 'camelCase'
-                },
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[path][name]__[local]',
               },
-              'postcss-loader', // 配置在 css-loader后，在sass|less|stylus-loader 之前
-              'sass-loader' // 将 Sass 编译成 CSS，默认使用 Node Sass
-            ]
+              importLoaders: 2, //如果sass文件里还引入了另外一个sass文件，另一个文件还会从sass-loader向上解析。如果不加，就直接从css-loader开始解析
+              sourceMap: true,
+              localsConvention: 'camelCase'
+            },
           },
           {
-            use: [
-              devMode ? 'vue-style-loader': MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 2,
-                }
-              },
-              'postcss-loader',
-              'sass-loader'
-            ]
-          }
+            loader: 'postcss-loader', // 配置在 css-loader 后，在 sass|less|stylus-loader 之前
+            options: {
+              sourceMap: true
+            }
+          },
+          'sass-loader' // 将 Sass 编译成 CSS，默认使用 Node Sass
+        ]
+      },
+      {
+        test: /\.styl/,
+        use: [
+          devMode ? 'vue-style-loader': MiniCssExtractPlugin.loader, // 将 JS 字符串生成为 style 节点
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          'stylus-loader'
         ]
       },
       {

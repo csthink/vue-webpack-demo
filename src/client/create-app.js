@@ -6,8 +6,6 @@ import App from './App.vue';
 // import createStore from './store/store';
 import createRouter from './config/router';
 
-import './assets/style/global.scss';
-
 Vue.use(VueRouter);
 Vue.use(Vuex);
 

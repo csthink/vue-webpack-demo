@@ -1,3 +1,6 @@
+import todo from '../views/todo/Todo.vue'
+import login from '../views/login/Login.vue'
+
 export default [
   {
     path: '/',
@@ -10,7 +13,8 @@ export default [
       title: 'todo 应用',
       description: 'todo 页面描述'
     },
-    component: () => import('../views/todo/Todo.vue'),
+    // component: () => import('../views/todo/Todo.vue'),
+    component: todo,
   },
   {
     path: '/login',
@@ -19,6 +23,7 @@ export default [
       title: '登录',
       description: '登录页面'
     },
-    component: () => import('../views/login/Login.vue')
+    // component: () => import('../views/login/Login.vue')
+    component: login
   }
 ]

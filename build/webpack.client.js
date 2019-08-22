@@ -34,7 +34,6 @@ const defaultPluginConfig = [
 
 // plugin 可以在 webpack 运行到某个时刻的时候，帮你做一些事情
 const devConfig = {
-  mode: 'development',
   devtool: 'cheap-module-eval-source-map', // sourcemap 打包编译后的文件和源文件的映射关系，用于开发者调试用
   // 解决每次在src里编写完代码都需要手动重新运行 npm run dev
   devServer: {
@@ -47,7 +46,7 @@ const devConfig = {
     // vue-route 的 mode 模式修改为 history 后，支持刷新页面功能，否则404
     historyApiFallback:{
       // index: '/public/index.html' // 具体内容与 webpack common 中 output的 publicPath有关，若设置了 publicPath,需要加上这部分前缀
-      index: '/index.html'
+      index: '/public/index.html'
     }
   },
   plugins: defaultPluginConfig.concat([
@@ -62,7 +61,6 @@ const devConfig = {
 }
 
 const prodConfig = {
-  mode: 'production',
   devtool: 'cheap-module-source-map',
   plugins: defaultPluginConfig.concat([
     new CleanWebpackPlugin(), // 在打包之前，可以删除dist文件夹下的所有内容
