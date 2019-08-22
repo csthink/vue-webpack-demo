@@ -1,10 +1,10 @@
 <template>
-  <div :id="$style.footer">
+  <div id="footer">
     <span>Written by csthink</span>
   </div>
 </template>
 
-<style lang="scss" module>
+<style lang="stylus" scoped>
 #footer{
   margin-top: 40px;
   text-align: center;

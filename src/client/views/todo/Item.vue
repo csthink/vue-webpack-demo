@@ -1,16 +1,13 @@
 <template>
-  <div
-    :class="[$style.todoItem, {[$style.completed]: todo.completed }]"
-  >
+  <div :class="['todo-item', todo.completed ? 'completed' : '']">
     <input
-      v-model="
-        todo.completed"
+      v-model="todo.completed"
       type="checkbox"
-      :class="$style.toggle"
+      class="toggle"
     >
     <label>{{ todo.content }}</label>
     <button
-      :class="$style.destory"
+      class="destory"
       @click="deleteTodo"
     />
   </div>
@@ -32,7 +29,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module>
+<style lang="stylus" scoped>
 .todo-item{
   position: relative;
   background: radial-gradient(red, transparent);

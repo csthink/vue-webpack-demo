@@ -1,18 +1,18 @@
 <template>
-  <div :class="$style.helper">
-    <span :class="$style.left">{{ unFinishedTodoLength }} items left</span>
-    <span :class="$style.tabs">
+  <div class="helper">
+    <span class="left">{{ unFinishedTodoLength }} items left</span>
+    <span class="tabs">
       <span
         v-for="state in states"
         :key="state"
-        :class="[$style.state, {[$style.actived]: filter === state}]"
+        :class="['state', filter === state ? 'actived' : '']"
         @click="toggleFilter(state)"
       >
         {{ state }}
       </span>
     </span>
     <span
-      :class="$style.clear"
+      class="clear"
       @click="clearAllCompleted()"
     >Clear Completed</span>
   </div>
@@ -51,7 +51,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module>
+<style lang="stylus" scoped>
 .helper{
   font-weight: 100;
   display: flex;
@@ -61,7 +61,6 @@ export default {
   background: radial-gradient(black, transparent);
   font-size: 14px;
   color: white;
-  // font-smoothing: antialiased;
 }
 .left, .clear, .tabs{
   padding: 0 10px;

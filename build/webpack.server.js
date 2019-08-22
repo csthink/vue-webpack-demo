@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge')
 
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const ServerMiniCssExtractPlugin = require('./ServerMiniCssExtractPlugin')
+// const ServerMiniCssExtractPlugin = require('./ServerMiniCssExtractPlugin')
 const VueServerPlugin = require('vue-server-renderer/server-plugin')
 const webpackCommonConfig = require('./webpack.common')
 // const devMode = process.env.NODE_ENV !== 'production'
@@ -22,35 +22,10 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(sa|sc|c)ss$/,
-        exclude: /node_modules/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                mode: 'local',
-                localIdentName: '[path][name]__[local]',
-              },
-              importLoaders: 2,
-              sourceMap: true,
-              localsConvention: 'camelCase'
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true
-            }
-          },
-          'sass-loader'
-        ]
-      },
-      {
         test: /\.styl/,
         use: [
-          MiniCssExtractPlugin.loader,
+          // MiniCssExtractPlugin.loader,
+          'vue-style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -69,9 +44,9 @@ const config = {
       'process.env.VUE_ENV': '"server"'
     }),
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'style.[contenthash:8].css'
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: 'style.[contenthash:8].css'
+    // }),
     new VueServerPlugin()
   ]
 }

@@ -1,10 +1,10 @@
 <template>
-  <header :class="$style.mainHeader">
+  <header class="main-header">
     <h1>TodoList</h1>
   </header>
 </template>
 
-<style lang="scss" module>
+<style lang="stylus">
 .main-header{
   text-align: center;
   h1{
